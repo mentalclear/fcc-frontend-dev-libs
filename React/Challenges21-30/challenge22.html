@@ -14,7 +14,7 @@
     <body>
         <div id="root">
             <div id="challenge-node">
-                <!-- Challenge 21 Comments -->
+                <!-- Challenge 22 Comments -->
                 <script type="text/babel">
                     class MyComponent extends React.Component {
                         constructor(props) {
@@ -24,10 +24,9 @@
                             }
                         }
                         render() {
-                            const name = this.state.name; // Another way to access the state
                             return (
                             <div>                                
-                                <h1>{name} </h1>                                
+                                <h1>{this.state.name} </h1>                                
                             </div>
                             );
                         }
