@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>React course from FreeCodeCamp</title>          
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        
+        <!-- React comment: Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root">
+            <div id="challenge-node">
+                <!-- Challenge 18 Comments -->
+                <script type="text/babel">
+                    class ReturnTempPassword extends React.Component {
+                        constructor(props) {
+                            super(props);
+
+                        }
+                        render() {
+                            return (
+                                    <div>                                   
+                                        <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>                                    
+                                    </div>
+                                );
+                            }
+                        };
+
+                    class ResetPassword extends React.Component {
+                        constructor(props) {
+                            super(props);
+
+                        }
+                        render() {
+                            return (
+                                <div>
+                                <h2>Reset Password</h2>
+                                <h3>We've generated a new temporary password for you.</h3>
+                                <h3>Please reset this password from your account settings ASAP.</h3>
+                                
+                                <ReturnTempPassword tempPassword="123RFDEE" />
+                                
+                                </div>
+                            );
+                        }
+                    };
+
+                    ReactDOM.render(<ResetPassword />, document.getElementById('root'));                        
+                </script>             
+            </div>            
+        </div>
+    </body>
+</html>
