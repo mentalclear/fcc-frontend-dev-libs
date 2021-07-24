@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>React course from FreeCodeCamp</title>          
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        
+        <!-- React comment: Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root">
+            <div id="challenge-node">
+                <!-- Challenge 35 Comments -->
+                <script type="text/babel">
+                    class OnlyEvens extends React.Component {
+                        constructor(props) {
+                            super(props);
+                        }
+                        shouldComponentUpdate(nextProps, nextState) {
+                            console.log('Should I update?');                            
+                            if (nextProps.value % 2 == 0) {
+                                return true;
+                            }
+                            return false;                            
+                        }
+                        componentDidUpdate() {
+                            console.log('Component re-rendered.');
+                        }
+                        render() {
+                            return <h1>{this.props.value}</h1>;
+                            }
+                        }
+
+                        class Controller extends React.Component {
+                        constructor(props) {
+                            super(props);
+                            this.state = {
+                            value: 0
+                            };
+                            this.addValue = this.addValue.bind(this);
+                        }
+                        addValue() {
+                            this.setState(state => ({
+                            value: state.value + 1
+                            }));
+                        }
+                        render() {
+                            return (
+                            <div>
+                                <button onClick={this.addValue}>Add</button>
+                                <OnlyEvens value={this.state.value} />
+                            </div>
+                            );
+                        }
+                    }
+                    ReactDOM.render(<OnlyEvens />, document.getElementById('root'));                        
+                </script>             
+            </div>            
+        </div>
+    </body>
+</html>
