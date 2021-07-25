@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>React course from FreeCodeCamp</title>          
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        
+        <!-- React comment: Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root">
+            <div id="challenge-node">
+                <!-- Challenge 44 Comments -->
+                <script type="text/babel">
+                    const textAreaStyles = {
+                        width: 235,
+                        margin: 5
+                    };
+
+                    class MyToDoList extends React.Component {
+                        constructor(props) {
+                            super(props);
+                            this.state = {
+                                userInput: '',
+                                toDoList: []
+                            }
+                            this.handleSubmit = this.handleSubmit.bind(this);
+                            this.handleChange = this.handleChange.bind(this);
+                        }
+                        handleSubmit() {
+                            const itemsArray = this.state.userInput.split(',');
+                            this.setState({
+                            toDoList: itemsArray
+                            });
+                        }
+                        handleChange(e) {
+                            this.setState({
+                            userInput: e.target.value
+                            });
+                        }
+                        render() {
+                            const items = this.state.toDoList.map(i => <li>{i}</li>);
+                            return (
+                            <div>
+                                <textarea
+                                onChange={this.handleChange}
+                                value={this.state.userInput}
+                                style={textAreaStyles}
+                                placeholder='Separate Items With Commas'
+                                />
+                                <br />
+                                <button onClick={this.handleSubmit}>Create List</button>
+                                <h1>My "To Do" List:</h1>
+                                <ul>{items}</ul>
+                            </div>
+                            );
+                        }
+                    }
+
+                    ReactDOM.render(<MyToDoList />, document.getElementById('root'));                        
+                </script>             
+            </div>            
+        </div>
+    </body>
+</html>

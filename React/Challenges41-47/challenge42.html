@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>React course from FreeCodeCamp</title>          
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        
+        <!-- React comment: Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root">
+            <div id="challenge-node">
+                <!-- Challenge 42 Comments -->
+                <script type="text/babel">
+                    class Results extends React.Component {
+                        constructor(props) {
+                            super(props);
+                        }
+                            render() {                                
+                                return (
+                                <h1>
+                                {this.props.fiftyFifty ? "You Win!" : "You Lose!"}
+                                </h1>
+                                )                                
+                            };
+                        }
+
+                        class GameOfChance extends React.Component {
+                        constructor(props) {
+                            super(props);
+                                this.state = {
+                                counter: 1
+                            };
+                            this.handleClick = this.handleClick.bind(this);
+                        }
+                        handleClick() {
+                            this.setState(prevState => {                            
+                            return {
+                                counter: this.state.counter + 1
+                                }
+                            });
+                        }
+                        render() {
+                            const expression = Math.random() >= 0.5 ? true : false
+                            return (
+                            <div>
+                                <button onClick={this.handleClick}>Play Again</button>                                
+                                <Results fiftyFifty={expression} />                                
+                                <p>{'Turn: ' + this.state.counter}</p>
+                            </div>
+                            );
+                        }
+                    }
+
+                    ReactDOM.render(<GameOfChance />, document.getElementById('root'));                        
+                </script>             
+            </div>            
+        </div>
+    </body>
+</html>
